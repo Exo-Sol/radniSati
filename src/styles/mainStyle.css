@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Heebo&family=Montserrat:ital@1&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  background-color: black;
+  color: azure;
+}
+
+.App {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flexWrapNav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 15px;
+}
+
+.flexWrapNav .flexWrapButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 15px;
+}
+
+.dateNav {
+  font-size: 2em;
+}
+
+.inputField {
+  margin-top: 7vh;
+  text-align: center;
+  font-size: 20px;
+  width: 150px;
+  padding: 5px;
+  border-radius: 15%;
+}
+
+.hourSelect {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 5%;
+  padding: 5%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+}
+
+.hourSelect .numberList {
+  border-radius: 50%;
+  border: black 1px solid;
+  color: black;
+  width: 40px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  text-align: center;
+  font-size: 20px;
+  height: 40px;
+  width: 40px;
+  padding: 7px;
+}
+
+.buttons {
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  border: none;
+  background-color: whitesmoke;
+  color: black;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+#save {
+  display: block;
+  margin: auto;
+  background-color: #3be294;
+  color: black;
+  font-family: "Heebo", sans-serif;
+  border: none;
+}
+
+#delete {
+  display: block;
+  margin: auto;
+  background-color: #e03f3f;
+  color: black;
+  font-family: "Heebo", sans-serif;
+}
+
+.timeArrow {
+  font-size: 50px;
+  font-weight: 100;
+  opacity: 0.7;
+}
+
+.hButton {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.hourPad {
+  height: 20vh;
+  width: 200px;
+  text-align: center;
+}
+
+.popUp {
+  position: fixed;
+  top: 5vh;
+  -webkit-box-shadow: rgba(59, 226, 148, 0.2) 0 0 5px 0px;
+          box-shadow: rgba(59, 226, 148, 0.2) 0 0 5px 0px;
+  border-radius: 50%;
+  padding: 15px;
+  padding-right: 10px;
+  padding-left: 10px;
+  background-color: rgba(59, 226, 148, 0.9);
+  color: black;
+  font-weight: 900;
+  font-size: 16px;
+  opacity: 0.7;
+}
+/*# sourceMappingURL=mainStyle.css.map */
