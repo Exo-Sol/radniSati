@@ -14,6 +14,41 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  #jN {
+    margin-bottom: 6vh;
+    padding: 15px;
+  }
+  #addJob {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 15px;
+    padding: 5px;
+
+    border-top: 2px rgb(163, 30, 30);
+    border-left: 2px;
+    border-radius: 15px;
+  }
+  #removeJob {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 15px;
+    padding: 5px;
+
+    border-top: 2px rgb(163, 30, 30);
+    border-right: 2px;
+    border-radius: 15px;
+  }
+  .jobDispl {
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+  }
+  .jobArrow {
+    font-size: 30px;
+  }
 }
 
 .flexWrapNav {
@@ -91,9 +126,6 @@
   font-family: "Heebo", sans-serif;
 }
 
-.form {
-}
-
 .timeArrow {
   font-size: 50px;
   font-weight: 100;
@@ -128,4 +160,30 @@
 
   font-size: 16px;
   opacity: 0.7;
+}
+
+.jobName {
+  margin-bottom: 50px;
+  margin-top: 20px;
+
+  .miniFlex {
+    display: flex;
+    align-items: center;
+  }
+
+  #placeHolder {
+    height: 35px;
+    margin-top: 5px;
+  }
+
+  #saveJob {
+    margin-top: 5px;
+    font-size: 25px;
+    height: 35px;
+    width: 35px;
+    border-bottom-right-radius: 50%;
+    border-top-right-radius: 50%;
+    border: none;
+    background-color: rgb(47, 47, 47);
+  }
 }
