@@ -9,6 +9,28 @@
   color: azure;
 }
 
+@-webkit-keyframes slidein {
+  from {
+    margin-bottom: 100%;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0%;
+    opacity: 1;
+  }
+}
+
+@keyframes slidein {
+  from {
+    margin-bottom: 100%;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0%;
+    opacity: 1;
+  }
+}
+
 .App {
   height: 100vh;
   display: -webkit-box;
@@ -68,6 +90,10 @@
 }
 
 .flexWrapNav {
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-name: slidein;
+          animation-name: slidein;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

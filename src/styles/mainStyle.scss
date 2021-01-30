@@ -7,6 +7,19 @@
   background-color: black;
   color: azure;
 }
+@keyframes slidein {
+  from {
+    margin-bottom: 100%;
+
+    opacity: 0;
+  }
+
+  to {
+    margin-top: 0%;
+
+    opacity: 1;
+  }
+}
 
 .App {
   height: 100vh;
@@ -52,6 +65,8 @@
 }
 
 .flexWrapNav {
+  animation-duration: 0.5s;
+  animation-name: slidein;
   display: flex;
   flex-direction: column;
   justify-content: center;
