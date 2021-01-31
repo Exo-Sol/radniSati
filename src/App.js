@@ -14,13 +14,20 @@ function App() {
   //////////////////////////////////////////////////////////////////
   const catchName = (name) => {
     ///first check if name is enetered
+    /// check that there is no duplicates in name
     if (name.length > 0) {
-      if (Array.isArray(jobName)) {
+      if (Array.isArray(jobName) && !jobName.includes(name)) {
         setJobName([...jobName, name]);
-      } else {
+      } else if (!Array.isArray(jobName)) {
         let x = [];
         x.push(name);
         setJobName(x);
+      } else {
+        /// show alert pointing why you cant enetr name
+        /// either you didnt type anything or name already exists
+        if (jobName.includes(name)) {
+          alert("Posao s tim imenom vec postoji");
+        }
       }
       setCurJob(name);
       setAddJob(false);
@@ -144,7 +151,7 @@ function App() {
 
       {jobName && (
         <animated.div style={springProps}>
-          <DateNav catchData={catchData} />
+          <DateNav catchData={catchData} curJob={curJob} />
         </animated.div>
       )}
     </div>

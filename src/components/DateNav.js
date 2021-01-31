@@ -6,7 +6,7 @@ import "../styles/mainStyle.css";
 
 import PopUp from "./PopUp";
 
-const DateNav = ({ catchData }) => {
+const DateNav = ({ catchData, curJob }) => {
   const [clickCount, setClickCount] = useState(0);
 
   //////////DATE FORMARING//////////////////////////
@@ -85,8 +85,14 @@ const DateNav = ({ catchData }) => {
 
   /////////////////////////////////////////////////////////////////////
   useEffect(() => {
-    let derivedWorkHours = selectedTimes.endTime - selectedTimes.startTime;
-    setWorkHours(derivedWorkHours);
+    let isMounted = true;
+    if (isMounted) {
+      let derivedWorkHours = selectedTimes.endTime - selectedTimes.startTime;
+      setWorkHours(derivedWorkHours);
+    }
+    return () => {
+      isMounted = false;
+    }; // use effect cleanup to set flag false, if unmounted
   }, [selectedTimes.endTime]);
 
   ////////////////////////////////////////////////////////////////////
@@ -125,8 +131,9 @@ const DateNav = ({ catchData }) => {
   ////////////////////////////////////////////////
   return (
     <>
-      {popUpState ? <PopUp /> : <div></div>}
-
+      <div className="popUpWrapper">
+        {popUpState ? <PopUp curJob={curJob} /> : <div></div>}
+      </div>
       <div className="dateNav">
         {backArrow}
         {`${selectedDay.dayName}, ${selectedDay.day}/${selectedDay.month}`}
