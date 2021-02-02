@@ -80,6 +80,9 @@
 
 .dateNav {
   font-size: 2em;
+  #animateDate {
+    padding-right: 10px;
+  }
 }
 
 .inputField {
@@ -206,4 +209,12 @@
     border: none;
     background-color: rgb(47, 47, 47);
   }
+}
+
+.displInfoMain {
+  position: fixed;
+  bottom: 15px;
+  text-align: center;
+  opacity: 0.4;
+  color: rgba(255, 238, 0, 0.808);
 }

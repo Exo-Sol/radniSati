@@ -121,6 +121,10 @@
   font-size: 2em;
 }
 
+.dateNav #animateDate {
+  padding-right: 10px;
+}
+
 .inputField {
   margin-top: 7vh;
   text-align: center;
@@ -260,5 +264,13 @@
   border-top-right-radius: 50%;
   border: none;
   background-color: #2f2f2f;
+}
+
+.displInfoMain {
+  position: fixed;
+  bottom: 15px;
+  text-align: center;
+  opacity: 0.4;
+  color: rgba(255, 238, 0, 0.808);
 }
 /*# sourceMappingURL=mainStyle.css.map */

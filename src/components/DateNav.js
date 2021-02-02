@@ -136,7 +136,8 @@ const DateNav = ({ catchData, curJob }) => {
       </div>
       <div className="dateNav">
         {backArrow}
-        {`${selectedDay.dayName}, ${selectedDay.day}/${selectedDay.month}`}
+
+        <span id="animateDate">{`${selectedDay.dayName}, ${selectedDay.day}/${selectedDay.month}`}</span>
         {fwdArrow}
       </div>
       <div className="flexWrapNav">

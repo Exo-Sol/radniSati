@@ -1,12 +1,42 @@
 import React, { useState, useEffect } from "react";
 import DateNav from "./components/DateNav";
 import NameJob from "./components/addRenameJob/NameJob";
+import DisplayThisMonthHours from "./components/DisplayThisMonthHours";
 import { useSpring, animated } from "react-spring";
 
 function App() {
   const [jobName, setJobName] = useState(null);
   const [curJob, setCurJob] = useState(null);
   const [addJob, setAddJob] = useState(false);
+  /// to force update on hours in a month
+  const [chageOfH, setChangeOfH] = useState(false);
+
+  ///Retrivin Jobs from local storage on initial render
+  useEffect(() => {
+    const savedJobs = window.localStorage.getItem("jobs");
+    console.log(savedJobs);
+    if (savedJobs) {
+      if (savedJobs.includes(",")) {
+        const array = savedJobs.split(",");
+        setJobName(array);
+        setCurJob(array[0]);
+      } else {
+        let x = [];
+        x.push(savedJobs);
+        setJobName(x);
+        setCurJob(x);
+      }
+    }
+    //   if (Array.isArray(savedJobs)) {
+    //     const x = [];
+    //     savedJobs.map((ele) => {
+    //       x.push(ele);
+    //     });
+    //     setJobName(x);
+    //   } else if (savedJobs) {
+    //     setJobName(savedJobs);
+    //   }
+  }, []);
 
   //////////////////////initial animation
   const springProps = useSpring({ opacity: addJob ? 0 : 1 });
@@ -39,6 +69,8 @@ function App() {
   useEffect(() => {
     if (jobName) {
       localStorage.setItem("jobs", jobName);
+    } else {
+      localStorage.removeItem("jobs");
     }
   }, [jobName]);
   //////////////////////////////////////////////////////////
@@ -94,6 +126,7 @@ function App() {
       console.log(storageArr);
       localStorage.setItem(dateObj.year, storageArr);
     }
+    setChangeOfH(!chageOfH);
   };
   ///////////////////////////////////////////////////////////////////////////////////////
   const backName = () => {
@@ -154,6 +187,7 @@ function App() {
           <DateNav catchData={catchData} curJob={curJob} />
         </animated.div>
       )}
+      <DisplayThisMonthHours curJob={curJob} change={chageOfH} />
     </div>
   );
 }
