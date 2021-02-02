@@ -187,7 +187,7 @@ function App() {
           <DateNav catchData={catchData} curJob={curJob} />
         </animated.div>
       )}
-      <DisplayThisMonthHours curJob={curJob} change={chageOfH} />
+      {jobName && <DisplayThisMonthHours curJob={curJob} change={chageOfH} />}
     </div>
   );
 }
