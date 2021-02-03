@@ -12,6 +12,7 @@ const HList = ({ clickHour, selectedTimes }) => {
   const arr = [];
   ////////////////////////
   const [displaySelector, changeDisplySelector] = useState(false);
+  const [dayNightIcon, setDayNightIcon] = useState(true);
 
   /////////////////////////////ANIMATION///////////////////////////////////////
   const props = useSpring({
@@ -81,26 +82,43 @@ const HList = ({ clickHour, selectedTimes }) => {
     changeDisplySelector(!displaySelector);
   };
 
+  const changeDayNight = () => {
+    setDayNightIcon(!dayNightIcon);
+  };
+
   return displaySelector ? (
     transitions.map(
       ({ item, key, props }) =>
         item && (
           <animated.div className="hourSelect" key={key} style={props}>
             {arr}
-            <button
-              className="numberList hButton"
+            <span
+              className="material-icons numberList hButton"
               onClick={hClick}
               style={resetSyle}
             >
-              H -
-            </button>
+              eject
+            </span>
+            {/* togle day ?night shifts */}
+            <span
+              className="material-icons numberList hButton"
+              id="timeOfDayIcon"
+              onClick={changeDayNight}
+              style={resetSyle}
+            >
+              {dayNightIcon ? "wb_sunny" : "nights_stay"}
+            </span>
           </animated.div>
         )
     )
   ) : (
-    <button className="numberList hButton" onClick={hClick} style={resetSyle}>
-      H +
-    </button>
+    <span
+      className="material-icons numberList hButton"
+      onClick={hClick}
+      style={resetSyle}
+    >
+      query_builder
+    </span>
   );
 };
 
