@@ -176,6 +176,10 @@
   padding: 7px;
 }
 
+.hourSelect #toggleIcon {
+  font-size: 23px;
+}
+
 .hourSelect #timeOfDayIcon {
   font-size: 25px;
 }

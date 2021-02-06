@@ -11,6 +11,11 @@ function FirstPage() {
   /// to force update on hours in a month
   const [chageOfH, setChangeOfH] = useState(false);
 
+  /////////////////////Saving current job in local storage when changed for display on page 2
+  useEffect(() => {
+    localStorage.setItem("currentJob", curJob);
+  }, [curJob]);
+
   ///Retrivin Jobs from local storage on initial render
   useEffect(() => {
     const savedJobs = window.localStorage.getItem("jobs");
@@ -21,22 +26,12 @@ function FirstPage() {
         setJobName(array);
         setCurJob(array[0]);
       } else {
-        /// bug here shows arrows when not array, aotherwise saves in [] not
         let x = [];
         x.push(savedJobs);
         setJobName(x);
         setCurJob(savedJobs);
       }
     }
-    //   if (Array.isArray(savedJobs)) {
-    //     const x = [];
-    //     savedJobs.map((ele) => {
-    //       x.push(ele);
-    //     });
-    //     setJobName(x);
-    //   } else if (savedJobs) {
-    //     setJobName(savedJobs);
-    //   }
   }, []);
 
   //////////////////////initial animation
