@@ -86,4 +86,26 @@
   -webkit-animation: growDown 200ms ease-in-out forwards;
           animation: growDown 200ms ease-in-out forwards;
 }
+
+.mainDiv {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: start;
+      align-content: start;
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 5px;
+  font-size: 15px;
+  border: azure 1px solid;
+  height: 500px;
+}
+
+.mainDiv .childDiv {
+  border-right: white 1px dotted;
+}
 /*# sourceMappingURL=styles.css.map */

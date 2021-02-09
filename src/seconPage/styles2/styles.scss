@@ -51,3 +51,20 @@
   align-self: flex-start;
   animation: growDown 200ms ease-in-out forwards;
 }
+
+.mainDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  justify-content: center;
+  align-content: start;
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 5px;
+  font-size: 15px;
+  border: azure 1px solid;
+  height: 500px;
+
+  .childDiv {
+    border-right: white 1px dotted;
+  }
+}

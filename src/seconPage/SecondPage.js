@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import MainDiv from "./components2/MainDiv";
 import "./styles2/styles.css";
 
 const SecondPage = ({ change }) => {
@@ -38,7 +39,7 @@ const SecondPage = ({ change }) => {
   monthsWorked.forEach((ele) => newMonthArr.push(ele));
 
   newMonthArr.sort();
-  ////////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////udating relevant data when month change or user inputs something on first page/////////////////////////////////////////////////////////////////////
   useEffect(() => {
     console.log("useeffect start");
 
@@ -71,6 +72,7 @@ const SecondPage = ({ change }) => {
   };
 
   const setClickedMonth = (e) => {
+    e.preventDefault(); // maybe
     setMonth(parseInt(e.target.innerText));
     if (month !== parseInt(e.target.innerText)) {
       setRelevantShifts([]);
@@ -92,6 +94,7 @@ const SecondPage = ({ change }) => {
             </li>
           ))}
       </ul>
+      {!toggleDropdown && <MainDiv data={relevantShifts} />}
     </div>
   );
 };
