@@ -4,7 +4,7 @@ import NameJob from "./components/addRenameJob/NameJob";
 import DisplayThisMonthHours from "./components/DisplayThisMonthHours";
 import { useSpring, animated } from "react-spring";
 
-function FirstPage() {
+function FirstPage({ onAddedTime }) {
   const [jobName, setJobName] = useState(null);
   const [curJob, setCurJob] = useState(null);
   const [addJob, setAddJob] = useState(false);
@@ -123,6 +123,8 @@ function FirstPage() {
       localStorage.setItem(dateObj.year, storageArr);
     }
     setChangeOfH(!chageOfH);
+    /// indicate change for second page
+    onAddedTime();
   };
   ///////////////////////////////////////////////////////////////////////////////////////
   const backName = () => {
