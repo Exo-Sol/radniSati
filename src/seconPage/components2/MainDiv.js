@@ -40,7 +40,7 @@ const MainDiv = ({ data }) => {
 
   ///////////// check this later
   if (Array.isArray(workHours) && workHours.length > 0) {
-    var ukupno = workHours.reduce((x, y) => x + y);
+    var ukupno = workHours.reduce((x, y) => parseInt(x) + parseInt(y));
   }
 
   console.log(days, month, dayOfWeek, startTimes, endTimes, workHours, num);

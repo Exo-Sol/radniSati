@@ -89,15 +89,25 @@ function FirstPage({ onAddedTime }) {
   };
   ////////////////////////////////////////////////////////
   const catchData = (dateObj, workHours, startEndTime) => {
-    const finalObj = {
-      job: curJob,
-      month: dateObj.month,
-      day: dateObj.day,
-      dayName: dateObj.dayName,
-      workHours: workHours,
-      startTime: startEndTime.startTime,
-      endTime: startEndTime.endTime,
-    };
+    const finalObj = startEndTime.startTime
+      ? {
+          job: curJob,
+          month: dateObj.month,
+          day: dateObj.day,
+          dayName: dateObj.dayName,
+          workHours: workHours,
+          startTime: startEndTime.startTime,
+          endTime: startEndTime.endTime,
+        }
+      : {
+          job: curJob,
+          month: dateObj.month,
+          day: dateObj.day,
+          dayName: dateObj.dayName,
+          workHours: workHours,
+          startTime: "#",
+          endTime: "#",
+        };
 
     const retrivedObj = JSON.parse(localStorage.getItem(dateObj.year));
 

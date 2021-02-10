@@ -21,16 +21,7 @@ const SecondPage = ({ change }) => {
   console.log("second page");
   //////////////////////////////////////////////////////////////////
   const monthsWorked = new Set();
-  /////////////////////////Dumy arr for first iteration
-  const dummyArr = {
-    day: 99,
-    dayName: "#",
-    endTime: "#",
-    job: "#",
-    month: 9,
-    startTime: "#",
-    workHours: 0,
-  };
+
   //////////////// populate dropdown with avaliable months /////////////////////////////////////////
   if (retriveArr) {
     if (Array.isArray(retriveArr)) {
