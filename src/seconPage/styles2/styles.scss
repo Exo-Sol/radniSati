@@ -60,11 +60,40 @@
   text-align: center;
   margin-top: 40px;
   padding-top: 5px;
-  font-size: 15px;
-  border: azure 1px solid;
+  font-size: 12px;
+
   height: 500px;
 
   .childDiv {
     border-right: white 1px dotted;
   }
+}
+li {
+  list-style-type: none;
+}
+
+.childLi:nth-child(even) {
+  background-color: rgb(24, 24, 24);
+}
+
+.childLi {
+  padding-top: 5px;
+}
+
+.title {
+  background-color: rgb(90, 84, 25);
+  padding-top: 3px;
+  padding-bottom: 4px;
+}
+
+.totalLi {
+  background-color: rgb(88, 15, 15);
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+
+.startColor {
+  color: #5de6da;
 }

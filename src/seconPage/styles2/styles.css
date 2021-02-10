@@ -100,12 +100,41 @@
   text-align: center;
   margin-top: 40px;
   padding-top: 5px;
-  font-size: 15px;
-  border: azure 1px solid;
+  font-size: 12px;
   height: 500px;
 }
 
 .mainDiv .childDiv {
   border-right: white 1px dotted;
+}
+
+li {
+  list-style-type: none;
+}
+
+.childLi:nth-child(even) {
+  background-color: #181818;
+}
+
+.childLi {
+  padding-top: 5px;
+}
+
+.title {
+  background-color: #5a5419;
+  padding-top: 3px;
+  padding-bottom: 4px;
+}
+
+.totalLi {
+  background-color: #580f0f;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+
+.startColor {
+  color: #5de6da;
 }
 /*# sourceMappingURL=styles.css.map */

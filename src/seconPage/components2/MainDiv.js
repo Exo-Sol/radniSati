@@ -1,5 +1,6 @@
 import React from "react";
 import DateChild from "../components2/childs/DateChild";
+import TemplateChild from "../components2/childs/TemplateChild";
 
 const MainDiv = ({ data }) => {
   // SORTING///////////////////////////////
@@ -10,10 +11,16 @@ const MainDiv = ({ data }) => {
 
   console.log(sortedData);
 
-  const num = sortedData.length;
+  const num = sortedData.map((ele, ind) => {
+    return ind + 1;
+  });
 
   const days = sortedData.map((ele, ind) => {
     return ele.day;
+  });
+
+  const month = sortedData.map((ele, ind) => {
+    return ele.month;
   });
 
   const dayOfWeek = sortedData.map((ele, ind) => {
@@ -31,15 +38,26 @@ const MainDiv = ({ data }) => {
     return ele.workHours;
   });
 
-  console.log(days, dayOfWeek, startTimes, endTimes, workHours, num);
+  // const ukupno = workHours.reduce((x, y) => x + y); bug here
+
+  console.log(days, month, dayOfWeek, startTimes, endTimes, workHours, num);
   return (
     <div className="mainDiv">
-      <div className="childDiv">Num</div>
-      <DateChild className="childDiv" />
-      <div className="childDiv">dOfw</div>
-      <div className="childDiv">start</div>
-      <div className="childDiv">end</div>
-      <div className="childDiv">hours</div>
+      <TemplateChild className="childDiv" data={num} tableName={"Br."} />
+      <DateChild className="childDiv" days={days} month={month} />
+      <TemplateChild className="childDiv" data={dayOfWeek} tableName={"dani"} />
+      <TemplateChild
+        className="childDiv"
+        data={startTimes}
+        tableName={"Start"}
+      />
+      <TemplateChild className="childDiv" data={endTimes} tableName={"Kraj"} />
+      <TemplateChild
+        className="childDiv"
+        data={workHours}
+        tableName={"Sati"}
+        // last={ukupno}
+      />
     </div>
   );
 };
