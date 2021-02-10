@@ -78,10 +78,15 @@ li {
 
 .childLi {
   padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 13px;
 }
 
 .title {
-  background-color: rgb(90, 84, 25);
+  background-color: rgb(211, 195, 56);
+  color: black;
+  font-weight: 700;
+  font-size: 14px;
   padding-top: 3px;
   padding-bottom: 4px;
 }

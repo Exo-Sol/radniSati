@@ -38,25 +38,39 @@ const MainDiv = ({ data }) => {
     return ele.workHours;
   });
 
-  // const ukupno = workHours.reduce((x, y) => x + y); bug here
+  ///////////// check this later
+  if (Array.isArray(workHours) && workHours.length > 0) {
+    var ukupno = workHours.reduce((x, y) => x + y);
+  }
 
   console.log(days, month, dayOfWeek, startTimes, endTimes, workHours, num);
   return (
     <div className="mainDiv">
-      <TemplateChild className="childDiv" data={num} tableName={"Br."} />
+      <TemplateChild
+        className="childDiv"
+        data={num}
+        numTag={true}
+        tableName={"Br."}
+      />
       <DateChild className="childDiv" days={days} month={month} />
       <TemplateChild className="childDiv" data={dayOfWeek} tableName={"dani"} />
       <TemplateChild
         className="childDiv"
         data={startTimes}
         tableName={"Start"}
+        startTag={true}
       />
-      <TemplateChild className="childDiv" data={endTimes} tableName={"Kraj"} />
+      <TemplateChild
+        className="childDiv"
+        data={endTimes}
+        tableName={"Kraj"}
+        endTag={true}
+      />
       <TemplateChild
         className="childDiv"
         data={workHours}
         tableName={"Sati"}
-        // last={ukupno}
+        last={ukupno}
       />
     </div>
   );

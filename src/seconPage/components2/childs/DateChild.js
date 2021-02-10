@@ -6,7 +6,7 @@ const DateChild = ({ month, days }) => {
       <div className="title">datum</div>
       <ul className="lists">
         {month.map((ele, ind) => {
-          return <li className="childLi">{`${days[ind]}.${ele}`}</li>;
+          return <li key={ind} className="childLi">{`${days[ind]}.${ele}`}</li>;
         })}
       </ul>
     </div>
