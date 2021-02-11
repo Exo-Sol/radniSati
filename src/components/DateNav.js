@@ -30,7 +30,7 @@ const DateNav = ({ catchData, curJob, catchD }) => {
   //////////////////////////////////////////////////////////////
   const [selectedDay, setSelectedDay] = useState(formatDate());
   ///////////////////////////////////////////////////////////////
-  const [workHours, setWorkHours] = useState(0);
+  const [workHours, setWorkHours] = useState(undefined);
   //////////////////////////////////////////////////////////////
   const [selectedTimes, setSelectedTimes] = useState({
     startTime: null,
@@ -87,8 +87,10 @@ const DateNav = ({ catchData, curJob, catchD }) => {
   useEffect(() => {
     let isMounted = true;
     if (isMounted) {
-      let derivedWorkHours = selectedTimes.endTime - selectedTimes.startTime;
-      setWorkHours(derivedWorkHours);
+      if (selectedTimes.endTime !== null) {
+        let derivedWorkHours = selectedTimes.endTime - selectedTimes.startTime;
+        setWorkHours(derivedWorkHours);
+      }
     }
     return () => {
       isMounted = false;
@@ -106,9 +108,9 @@ const DateNav = ({ catchData, curJob, catchD }) => {
     e.preventDefault();
     if (workHours > 24 || workHours < 0) {
       alert("Netocno uneseni sati");
-    } else if (workHours) {
+    } else if (workHours !== 0) {
       catchData(selectedDay, workHours, selectedTimes);
-      setWorkHours(0);
+      setWorkHours(undefined);
       setSelectedTimes({
         startTime: null,
         endTime: null,
@@ -122,13 +124,15 @@ const DateNav = ({ catchData, curJob, catchD }) => {
   };
   /////////////////////////////////////////////
   const clickDelete = () => {
-    setWorkHours(0);
+    setWorkHours(undefined);
     setSelectedTimes({
       startTime: null,
       endTime: null,
     });
   };
-  ////////////////////////////////////////////////
+
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////
   return (
     <>
       <div className="popUpWrapper">
@@ -143,12 +147,18 @@ const DateNav = ({ catchData, curJob, catchD }) => {
       <div className="flexWrapNav">
         <input
           type="number"
+          inputMode="numeric"
+          pattern="[0-9]*"
           className="inputField"
           name="workHours"
           placeholder="Radni sati"
           value={workHours}
           onChange={hoursChange}
           style={{ display: "block" }}
+          autoFocus={true}
+          onKeyDown={(evt) =>
+            ["e", "E", "+", "-"].includes(evt.key) && evt.preventDefault()
+          }
         />
         <br />
         <div className="flexWrapButtons">

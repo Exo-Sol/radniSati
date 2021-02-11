@@ -9,12 +9,12 @@ const DisplayThisMonthHours = ({ curJob }) => {
   let totalH = 0;
   if (retriveArr && Array.isArray(retriveArr)) {
     retriveArr.map((ele, ind) => {
-      if (ele.month === month && ele.job === curJob) {
-        totalH += ele.workHours;
+      if (ele.month === parseInt(month) && ele.job === curJob) {
+        totalH += parseInt(ele.workHours);
       }
     });
   } else if (retriveArr) {
-    totalH += retriveArr.workHours;
+    totalH += parseInt(retriveArr.workHours);
   }
 
   let stringTotalH = totalH.toString();

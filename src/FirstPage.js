@@ -16,6 +16,8 @@ function FirstPage({ onAddedTime }) {
   useEffect(() => {
     localStorage.setItem("currentJob", curJob);
     /// indicate change for second page
+    /////////////////////////////////////
+    ///////////////////////////////////////
     onAddedTime();
   }, [curJob]);
 

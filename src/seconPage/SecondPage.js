@@ -98,7 +98,7 @@ const SecondPage = ({ change }) => {
 
   return (
     <div>
-      <div>{curJob}</div>
+      <div className="curJob">{curJob}</div>
       <ul className="monthWhole">
         <li className="material-icons icons" onClick={dropDown}>
           arrow_drop_down_circle <p id="dropMonths">Mjesec {month}</p>

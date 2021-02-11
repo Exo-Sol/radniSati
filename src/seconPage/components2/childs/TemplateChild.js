@@ -34,7 +34,7 @@ const TemplateChild = ({ data, tableName, last, endTag, startTag, numTag }) => {
             );
           })}
           {last && (
-            <li key={9999} className="childLi totalLi">
+            <li key={9999} className=" childLi" id="totalLi">
               {last}
             </li>
           )}

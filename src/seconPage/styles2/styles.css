@@ -73,7 +73,9 @@
 
 .monthList {
   font-size: 25px;
-  background-color: blueviolet;
+  background-color: azure;
+  color: black;
+  font-weight: 700;
   width: 30px;
   text-align: center;
   border-radius: 50%;
@@ -131,7 +133,7 @@ li {
   padding-bottom: 4px;
 }
 
-.totalLi {
+#totalLi {
   background-color: #580f0f;
   padding-top: 3px;
   padding-bottom: 3px;
@@ -141,5 +143,12 @@ li {
 
 .startColor {
   color: #5de6da;
+}
+
+.curJob {
+  float: right;
+  padding: 5px;
+  margin-top: 10px;
+  color: aliceblue;
 }
 /*# sourceMappingURL=styles.css.map */
