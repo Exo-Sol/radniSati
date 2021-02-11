@@ -18,8 +18,13 @@ const SecondPage = ({ change }) => {
 
   ///////////////////////////////////////////////////////////////////
   const retriveArr = JSON.parse(localStorage.getItem(dateObj.getFullYear()));
-  console.log("second page");
+
   //////////////////////////////////////////////////////////////////
+  useEffect(() => {
+    setCurJob(currentJob);
+    console.log("masta");
+  }, [change]);
+  ////////////////////////////////////////////////////////////
   const monthsWorked = new Set();
 
   //////////////// populate dropdown with avaliable months /////////////////////////////////////////
@@ -43,8 +48,6 @@ const SecondPage = ({ change }) => {
   ///////////////////////////////udating relevant data when month change or user inputs something on first page/////////////////////////////////////////////////////////////////////
 
   useEffect(() => {
-    console.log("useeffect start");
-
     if (Array.isArray(retriveArr)) {
       retriveArr.map((ele, ind) => {
         if (ele.job === curJob && ele.month === month) {
@@ -53,8 +56,6 @@ const SecondPage = ({ change }) => {
       });
     } else if (retriveArr) {
       if (retriveArr.job === curJob && retriveArr.month === month) {
-        console.log("hit");
-        console.log(retriveArr);
         setRelevantShifts([retriveArr]);
       }
     }
@@ -66,13 +67,13 @@ const SecondPage = ({ change }) => {
       retriveArr.map((ele, ind) => {
         if (ele.job === curJob && ele.month === month) {
           setRelevantShifts((relevantShifts) => [...relevantShifts, ele]);
+          console.log(curJob);
         }
       });
     } else if (retriveArr) {
       if (retriveArr.job === curJob && retriveArr.month === month) {
-        console.log("hit");
-        console.log(retriveArr);
         setRelevantShifts([retriveArr]);
+        console.log(curJob);
       }
     }
   }, [change]);
@@ -89,7 +90,6 @@ const SecondPage = ({ change }) => {
       setRelevantShifts([]);
     }
     setToggleDropdown(false);
-    console.log("clicked month");
   };
 
   return (

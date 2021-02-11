@@ -6,7 +6,7 @@ import "../styles/mainStyle.css";
 
 import PopUp from "./PopUp";
 
-const DateNav = ({ catchData, curJob }) => {
+const DateNav = ({ catchData, curJob, catchD }) => {
   const [clickCount, setClickCount] = useState(0);
 
   //////////DATE FORMARING//////////////////////////
@@ -165,7 +165,11 @@ const DateNav = ({ catchData, curJob }) => {
           </button>
         </div>
         <div className="hourPad">
-          <HList clickHour={clickHour} selectedTimes={selectedTimes} />
+          <HList
+            clickHour={clickHour}
+            selectedTimes={selectedTimes}
+            catchD={catchD}
+          />
         </div>
       </div>
     </>

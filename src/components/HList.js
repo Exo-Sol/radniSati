@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSpring, animated, useTransition } from "react-spring";
 import "../styles/mainStyle.css";
 
-const HList = ({ clickHour, selectedTimes }) => {
+const HList = ({ clickHour, selectedTimes, catchD }) => {
   // const clickedBtn = (e) => {
   //   clickHour
   //   console.log(e.target.textContent);
@@ -79,6 +79,7 @@ const HList = ({ clickHour, selectedTimes }) => {
 
   const hClick = () => {
     changeDisplySelector(!displaySelector);
+    catchD();
   };
 
   return displaySelector ? (

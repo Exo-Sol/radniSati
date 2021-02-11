@@ -10,10 +10,12 @@ function FirstPage({ onAddedTime }) {
   const [addJob, setAddJob] = useState(false);
   /// to force update on hours in a month
   const [chageOfH, setChangeOfH] = useState(false);
-
+  // to toggle of display thismonthhours
+  const [displaySwitch, setDisplaySwitch] = useState(true);
   /////////////////////Saving current job in local storage when changed for display on page 2
   useEffect(() => {
     localStorage.setItem("currentJob", curJob);
+    /// indicate change for second page
   }, [curJob]);
 
   ///Retrivin Jobs from local storage on initial render
@@ -146,6 +148,7 @@ function FirstPage({ onAddedTime }) {
     } else {
       setCurJob(jobName[curIndex - 1]);
     }
+    onAddedTime();
   };
 
   const fowardName = () => {
@@ -156,6 +159,7 @@ function FirstPage({ onAddedTime }) {
     } else {
       setCurJob(jobName[curIndex + 1]);
     }
+    onAddedTime();
   };
   //////////////////////////////////////////////////////////////////////////////////////
   const jobDisplay = (
@@ -175,6 +179,11 @@ function FirstPage({ onAddedTime }) {
     </div>
   );
   ////////////////////////////////////////////////////////////////////////////
+  const catchDropdown = () => {
+    setDisplaySwitch(!displaySwitch);
+  };
+
+  ///////////////////////////////////////////////////////////////////////////
   return (
     <div className="FirstPage">
       {jobName && (
@@ -192,10 +201,16 @@ function FirstPage({ onAddedTime }) {
 
       {jobName && (
         <animated.div style={springProps}>
-          <DateNav catchData={catchData} curJob={curJob} />
+          <DateNav
+            catchData={catchData}
+            curJob={curJob}
+            catchD={catchDropdown}
+          />
         </animated.div>
       )}
-      {jobName && <DisplayThisMonthHours curJob={curJob} change={chageOfH} />}
+      {jobName && displaySwitch && (
+        <DisplayThisMonthHours curJob={curJob} change={chageOfH} />
+      )}
     </div>
   );
 }
