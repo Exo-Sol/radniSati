@@ -16,6 +16,7 @@ function FirstPage({ onAddedTime }) {
   useEffect(() => {
     localStorage.setItem("currentJob", curJob);
     /// indicate change for second page
+    onAddedTime();
   }, [curJob]);
 
   ///Retrivin Jobs from local storage on initial render
@@ -148,7 +149,6 @@ function FirstPage({ onAddedTime }) {
     } else {
       setCurJob(jobName[curIndex - 1]);
     }
-    onAddedTime();
   };
 
   const fowardName = () => {
@@ -159,7 +159,6 @@ function FirstPage({ onAddedTime }) {
     } else {
       setCurJob(jobName[curIndex + 1]);
     }
-    onAddedTime();
   };
   //////////////////////////////////////////////////////////////////////////////////////
   const jobDisplay = (

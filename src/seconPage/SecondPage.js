@@ -9,10 +9,13 @@ const SecondPage = ({ change }) => {
   /////////////////////////////////////////////////////////
 
   const currentJob = localStorage.getItem("currentJob");
+  //////////////////////////////
+  /////////Need to set cur job so it changes before usefeect for getting relevan array
 
   //////////////////////////////////////////////////////////////////
   const dateObj = new Date();
   const [curJob, setCurJob] = useState(currentJob);
+  const [linkEffect, setLinkEffect] = useState(false);
   const [month, setMonth] = useState(dateObj.getMonth() + 1);
   const [relevantShifts, setRelevantShifts] = useState([]);
 
@@ -21,8 +24,9 @@ const SecondPage = ({ change }) => {
 
   //////////////////////////////////////////////////////////////////
   useEffect(() => {
-    setCurJob(currentJob);
+    setCurJob(() => currentJob);
     console.log("masta");
+    setLinkEffect(!linkEffect);
   }, [change]);
   ////////////////////////////////////////////////////////////
   const monthsWorked = new Set();
@@ -76,7 +80,7 @@ const SecondPage = ({ change }) => {
         console.log(curJob);
       }
     }
-  }, [change]);
+  }, [linkEffect]);
 
   //////////////////////////////////////////////////////////////////////////////////////////////
   const dropDown = () => {
@@ -94,6 +98,7 @@ const SecondPage = ({ change }) => {
 
   return (
     <div>
+      <div>{curJob}</div>
       <ul className="monthWhole">
         <li className="material-icons icons" onClick={dropDown}>
           arrow_drop_down_circle <p id="dropMonths">Mjesec {month}</p>
