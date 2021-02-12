@@ -112,3 +112,26 @@ li {
   margin-top: 10px;
   color: aliceblue;
 }
+
+.deleteDiv {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 5px;
+
+  #deleteIcon {
+    color: bisque;
+  }
+  #delPlaceholder {
+    margin: 0;
+    display: block;
+    width: 70px;
+  }
+}
+
+.nuke {
+  height: 45px;
+  position: absolute;
+  bottom: 0;
+  right: -100vw;
+}

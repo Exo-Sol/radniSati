@@ -25,7 +25,13 @@ const App = () => {
           />
           <Route
             path="/second"
-            render={(props) => <SecondPage {...props} change={change} />}
+            render={(props) => (
+              <SecondPage
+                {...props}
+                change={change}
+                onAddedTime={onAddedTime}
+              />
+            )}
           />
         </SwipeableRoutes>
       </div>

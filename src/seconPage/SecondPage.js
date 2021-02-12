@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import MainDiv from "./components2/MainDiv";
+import Delete from "./components2/Delete";
+import NukeStorage from "./components2/NukeStorage";
 import "./styles2/styles.css";
 
-const SecondPage = ({ change }) => {
+const SecondPage = ({ change, onAddedTime }) => {
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
   /////////////////////////////getting JObs
@@ -79,6 +81,8 @@ const SecondPage = ({ change }) => {
         setRelevantShifts([retriveArr]);
         console.log(curJob);
       }
+    } else {
+      setRelevantShifts([]);
     }
   }, [linkEffect]);
 
@@ -111,6 +115,8 @@ const SecondPage = ({ change }) => {
           ))}
       </ul>
       {!toggleDropdown && <MainDiv data={relevantShifts} />}
+      <Delete relevantShifts={relevantShifts} onAddedTime={onAddedTime} />
+      <NukeStorage onAddedTime={onAddedTime} />
     </div>
   );
 };
