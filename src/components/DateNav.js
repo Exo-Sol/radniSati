@@ -110,7 +110,7 @@ const DateNav = ({ catchData, curJob, catchD }) => {
       alert("Netocno uneseni sati");
     } else if (workHours !== 0) {
       catchData(selectedDay, workHours, selectedTimes);
-      setWorkHours(undefined);
+
       setSelectedTimes({
         startTime: null,
         endTime: null,
