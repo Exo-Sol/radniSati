@@ -27,6 +27,7 @@ const SecondPage = ({ change, onAddedTime }) => {
   //////////////////////////////////////////////////////////////////
   useEffect(() => {
     setCurJob(() => currentJob);
+    setRelevantShifts(() => []);
     console.log("masta");
     setLinkEffect(!linkEffect);
   }, [change]);
@@ -69,7 +70,6 @@ const SecondPage = ({ change, onAddedTime }) => {
 
   useEffect(() => {
     if (Array.isArray(retriveArr)) {
-      setRelevantShifts(() => []);
       retriveArr.map((ele, ind) => {
         if (ele.job === curJob && ele.month === month) {
           setRelevantShifts((relevantShifts) => [...relevantShifts, ele]);
@@ -84,6 +84,7 @@ const SecondPage = ({ change, onAddedTime }) => {
     } else {
       setRelevantShifts([]);
     }
+    console.log("kokikoki");
   }, [linkEffect]);
 
   //////////////////////////////////////////////////////////////////////////////////////////////

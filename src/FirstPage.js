@@ -140,6 +140,7 @@ function FirstPage({ onAddedTime }) {
     setChangeOfH(!chageOfH);
     /// indicate change for second page
     onAddedTime();
+    console.log("to mi treba tommy");
   };
   ///////////////////////////////////////////////////////////////////////////////////////
   const backName = () => {

@@ -71,7 +71,7 @@ const Delete = ({ relevantShifts, onAddedTime }) => {
   return (
     <div className="deleteDiv">
       <span
-        class="material-icons icons"
+        className="material-icons icons"
         id="deleteIcon"
         onClick={firstClickDel}
       >
