@@ -49,9 +49,13 @@ const SecondPage = ({ change, onAddedTime }) => {
   /////////////////////////////
   const newMonthArr = [];
 
-  monthsWorked.forEach((ele) => newMonthArr.push(ele));
+  monthsWorked.forEach((ele) => newMonthArr.push(parseInt(ele)));
 
-  newMonthArr.sort();
+  console.log(monthsWorked);
+
+  newMonthArr.sort((a, b) => a - b);
+
+  console.log(newMonthArr);
   ///////////////////////////////udating relevant data when month change or user inputs something on first page/////////////////////////////////////////////////////////////////////
 
   useEffect(() => {

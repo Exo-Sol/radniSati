@@ -106,7 +106,12 @@ const DateNav = ({ catchData, curJob, catchD }) => {
   //////////////////////////////////
   const onSubmit = (e) => {
     e.preventDefault();
-    if (workHours > 24 || workHours < 0 || workHours === undefined) {
+    if (
+      workHours > 24 ||
+      workHours < 0 ||
+      workHours === "" ||
+      workHours === undefined
+    ) {
       alert("Netocno uneseni sati");
     } else if (workHours !== 0) {
       catchData(selectedDay, workHours, selectedTimes);
@@ -124,7 +129,7 @@ const DateNav = ({ catchData, curJob, catchD }) => {
   };
   /////////////////////////////////////////////
   const clickDelete = () => {
-    setWorkHours(undefined);
+    setWorkHours("");
     setSelectedTimes({
       startTime: null,
       endTime: null,

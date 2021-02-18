@@ -10,7 +10,7 @@ const Page2 = () => {
 
       <div className="info">
         <h4>"Radni sati" app Version 1.0.0</h4>
-        <h4>Exo</h4>
+        <h4>by Exo</h4>
       </div>
     </div>
   );
