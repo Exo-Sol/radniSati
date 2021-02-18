@@ -160,7 +160,6 @@ const DateNav = ({ catchData, curJob, catchD }) => {
           value={workHours}
           onChange={hoursChange}
           style={{ display: "block" }}
-          autoFocus={true}
           onKeyDown={(evt) =>
             ["e", "E", "+", "-", "."].includes(evt.key) && evt.preventDefault()
           }
