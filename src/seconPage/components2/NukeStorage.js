@@ -9,7 +9,7 @@ const NukeStorage = ({ onAddedTime }) => {
       )
     ) {
       localStorage.clear();
-      onAddedTime();
+      onAddedTime(true);
       window.alert("Izbrisano");
     } else {
       // Do nothing!

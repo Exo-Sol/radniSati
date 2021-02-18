@@ -7,6 +7,9 @@
   background-color: black;
   color: azure;
 }
+*:focus {
+  outline: none !important;
+}
 @keyframes slidein {
   from {
     margin-bottom: 100%;
@@ -236,4 +239,81 @@
   text-align: center;
   opacity: 0.4;
   color: rgba(255, 238, 0, 0.808);
+}
+
+///////////////////////////////////////////////
+
+@keyframes oscil1 {
+  from {
+    transform: rotate(0deg);
+    animation-timing-function: cubic-bezier(0.1, 0.3, 0.3, 1);
+  }
+  25% {
+    transform: rotate(170deg);
+    animation-timing-function: cubic-bezier(0.7, 0, 0.9, 0.7);
+  }
+  50% {
+    transform: rotate(0deg);
+    animation-timing-function: cubic-bezier(0.1, 0.3, 0.3, 1);
+  }
+  75% {
+    transform: rotate(-170deg);
+    animation-timing-function: cubic-bezier(0.7, 0, 0.9, 0.7);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(170deg);
+    transform: rotate(170deg);
+    opacity: 0.1;
+  }
+  50% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    opacity: 0.8;
+  }
+  0% {
+    -webkit-transform: rotate(170deg);
+    transform: rotate(170deg);
+    opacity: 0.1;
+  }
+}
+
+.logoDiv {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+
+  .logo {
+    -webkit-animation: oscil1 6s ease-in-out infinite;
+    -moz-animation: spin 6s ease-in-out infinite;
+    animation: spin 6s ease-in-out infinite;
+    height: 200px;
+    width: 200px;
+    margin-top: 30px;
+  }
+
+  .info {
+    position: fixed;
+    bottom: 15px;
+    margin-left: 10px;
+    width: 100%;
+    font-size: 14px;
+  }
 }

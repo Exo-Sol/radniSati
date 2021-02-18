@@ -106,7 +106,7 @@ const DateNav = ({ catchData, curJob, catchD }) => {
   //////////////////////////////////
   const onSubmit = (e) => {
     e.preventDefault();
-    if (workHours > 24 || workHours < 0) {
+    if (workHours > 24 || workHours < 0 || workHours === undefined) {
       alert("Netocno uneseni sati");
     } else if (workHours !== 0) {
       catchData(selectedDay, workHours, selectedTimes);

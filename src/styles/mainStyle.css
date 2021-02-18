@@ -9,6 +9,10 @@
   color: azure;
 }
 
+*:focus {
+  outline: none !important;
+}
+
 @-webkit-keyframes slidein {
   from {
     margin-bottom: 100%;
@@ -296,5 +300,122 @@
   text-align: center;
   opacity: 0.4;
   color: rgba(255, 238, 0, 0.808);
+}
+
+@-webkit-keyframes oscil1 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    -webkit-animation-timing-function: cubic-bezier(0.1, 0.3, 0.3, 1);
+            animation-timing-function: cubic-bezier(0.1, 0.3, 0.3, 1);
+  }
+  25% {
+    -webkit-transform: rotate(170deg);
+            transform: rotate(170deg);
+    -webkit-animation-timing-function: cubic-bezier(0.7, 0, 0.9, 0.7);
+            animation-timing-function: cubic-bezier(0.7, 0, 0.9, 0.7);
+  }
+  50% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    -webkit-animation-timing-function: cubic-bezier(0.1, 0.3, 0.3, 1);
+            animation-timing-function: cubic-bezier(0.1, 0.3, 0.3, 1);
+  }
+  75% {
+    -webkit-transform: rotate(-170deg);
+            transform: rotate(-170deg);
+    -webkit-animation-timing-function: cubic-bezier(0.7, 0, 0.9, 0.7);
+            animation-timing-function: cubic-bezier(0.7, 0, 0.9, 0.7);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@keyframes oscil1 {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    -webkit-animation-timing-function: cubic-bezier(0.1, 0.3, 0.3, 1);
+            animation-timing-function: cubic-bezier(0.1, 0.3, 0.3, 1);
+  }
+  25% {
+    -webkit-transform: rotate(170deg);
+            transform: rotate(170deg);
+    -webkit-animation-timing-function: cubic-bezier(0.7, 0, 0.9, 0.7);
+            animation-timing-function: cubic-bezier(0.7, 0, 0.9, 0.7);
+  }
+  50% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    -webkit-animation-timing-function: cubic-bezier(0.1, 0.3, 0.3, 1);
+            animation-timing-function: cubic-bezier(0.1, 0.3, 0.3, 1);
+  }
+  75% {
+    -webkit-transform: rotate(-170deg);
+            transform: rotate(-170deg);
+    -webkit-animation-timing-function: cubic-bezier(0.7, 0, 0.9, 0.7);
+            animation-timing-function: cubic-bezier(0.7, 0, 0.9, 0.7);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(170deg);
+    transform: rotate(170deg);
+    opacity: 0.1;
+  }
+  50% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    opacity: 0.8;
+  }
+  0% {
+    -webkit-transform: rotate(170deg);
+    transform: rotate(170deg);
+    opacity: 0.1;
+  }
+}
+
+.logoDiv {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.logoDiv .logo {
+  -webkit-animation: oscil1 6s ease-in-out infinite;
+  animation: spin 6s ease-in-out infinite;
+  height: 200px;
+  width: 200px;
+  margin-top: 30px;
+}
+
+.logoDiv .info {
+  position: fixed;
+  bottom: 15px;
+  margin-left: 10px;
+  width: 100%;
+  font-size: 14px;
 }
 /*# sourceMappingURL=mainStyle.css.map */

@@ -4,7 +4,7 @@ import NameJob from "./components/addRenameJob/NameJob";
 import DisplayThisMonthHours from "./components/DisplayThisMonthHours";
 import { useSpring, animated } from "react-spring";
 
-function FirstPage({ onAddedTime }) {
+function FirstPage({ onAddedTime, nuke }) {
   const [jobName, setJobName] = useState(null);
   const [curJob, setCurJob] = useState(null);
   const [addJob, setAddJob] = useState(false);
@@ -20,6 +20,11 @@ function FirstPage({ onAddedTime }) {
     ///////////////////////////////////////
     onAddedTime();
   }, [curJob]);
+
+  useEffect(() => {
+    setJobName(null);
+    setCurJob(null);
+  }, [nuke]);
 
   ///Retrivin Jobs from local storage on initial render
   useEffect(() => {
