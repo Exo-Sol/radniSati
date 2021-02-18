@@ -75,7 +75,7 @@ const Delete = ({ relevantShifts, onAddedTime }) => {
         id="deleteIcon"
         onClick={firstClickDel}
       >
-        delete
+        e872
       </span>
       {clickedDel && (
         <animated.input

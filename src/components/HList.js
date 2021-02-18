@@ -93,7 +93,7 @@ const HList = ({ clickHour, selectedTimes, catchD }) => {
               onClick={hClick}
               style={resetSyle}
             >
-              eject
+              e8fb
             </span>
           </animated.div>
         )
@@ -104,7 +104,7 @@ const HList = ({ clickHour, selectedTimes, catchD }) => {
       onClick={hClick}
       style={resetSyle}
     >
-      query_builder
+      e8ae
     </span>
   );
 };

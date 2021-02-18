@@ -62,13 +62,13 @@ const DateNav = ({ catchData, curJob, catchD }) => {
 
   const backArrow = (
     <span className="material-icons timeArrow" onClick={dayBack}>
-      arrow_back_ios
+      e5e0
     </span>
   );
 
   const fwdArrow = (
     <span className="material-icons timeArrow" onClick={dayFoward}>
-      arrow_forward_ios
+      e5e1
     </span>
   );
   /////////////////////////////////////////////////////////

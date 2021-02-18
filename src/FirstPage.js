@@ -173,14 +173,14 @@ function FirstPage({ onAddedTime, nuke }) {
     <div className="jobDispl">
       {jobName && jobName.length > 1 && (
         <span className="material-icons jobArrow" onClick={backName}>
-          arrow_back_ios
+          e5e0
         </span>
       )}
 
       <h4 id="jN">{curJob}</h4>
       {jobName && jobName.length > 1 && (
         <span className="material-icons jobArrow" onClick={fowardName}>
-          arrow_forward_ios
+          e5e1
         </span>
       )}
     </div>
