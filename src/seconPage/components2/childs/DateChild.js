@@ -3,10 +3,10 @@ import React from "react";
 const DateChild = ({ month, days }) => {
   return (
     <div>
-      <div className="title">datum</div>
+      <div className="title">date</div>
       <ul className="lists">
         {month.map((ele, ind) => {
-          return <li key={ind} className="childLi">{`${days[ind]}.${ele}`}</li>;
+          return <li className="childLi">{`${days[ind]}.${ele}`}</li>;
         })}
       </ul>
     </div>

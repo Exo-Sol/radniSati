@@ -85,7 +85,7 @@ const Delete = ({ relevantShifts, onAddedTime }) => {
           className="inputField"
           id="delPlaceholder"
           name="workHours"
-          placeholder="Br?"
+          placeholder="num?"
           value={deleteInput}
           onChange={numInput}
           style={contentProps}

@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import FirstPage from "./FirstPage";
+import FirstPage from "./firstPage/FirstPage";
 import SecondPage from "./seconPage/SecondPage";
 import Page2 from "./components/Page2";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import SwipeableRoutes from "react-swipeable-routes";
 
 const App = () => {
-  // to indicate change in added time to pase change notification to second ppage
+  // to indicate change in added time to update info to second ppage
   const [change, setChange] = useState(false);
-  // when you "nuke" delete all data, to delete jobs enered in state also
-  const [nukeAll, setNukeAll] = useState(false);
+  // when you "nuke" delete all data, also delets jobs
+  const [deleteAll, setDeleteAll] = useState(false);
 
-  const onAddedTime = (nuke = false) => {
+  const onAddedTime = (del = false) => {
     setChange(!change);
-    if (nuke) {
-      setNukeAll(!nukeAll);
+    if (del) {
+      setDeleteAll(!deleteAll);
       console.log();
     }
   };
@@ -36,7 +36,7 @@ const App = () => {
                   <FirstPage
                     {...props}
                     onAddedTime={onAddedTime}
-                    nuke={nukeAll}
+                    deleteAll={deleteAll}
                   />
                 )}
               />
@@ -54,6 +54,7 @@ const App = () => {
           </div>
         </Router>
       ) : (
+        // no data entry display first and second page
         <Router>
           <div className="App">
             <SwipeableRoutes>
@@ -63,7 +64,7 @@ const App = () => {
                   <FirstPage
                     {...props}
                     onAddedTime={onAddedTime}
-                    nuke={nukeAll}
+                    deleteAll={deleteAll}
                   />
                 )}
               />

@@ -1,31 +1,12 @@
 import React, { useState, useEffect } from "react";
+import HourList from "./HourList";
+import formatDate from "./formatDate";
+import "../../styles/mainStyle.css";
+import PopUp from "../PopUp";
 
-import HList from "../components/HList";
-
-import "../styles/mainStyle.css";
-
-import PopUp from "./PopUp";
-
-const DateNav = ({ catchData, curJob, catchD }) => {
+const SetShift = ({ catchData, curJob, catchD }) => {
   const [clickCount, setClickCount] = useState(0);
 
-  //////////DATE FORMARING//////////////////////////
-  //////////////////////////////////////////////////
-  const formatDate = (count) => {
-    const dateObj = new Date(),
-      dayNames = ["Ned", "Pon", "Uto", "Sri", "Cet", "Pet", "Sub"];
-    if (clickCount !== 0) {
-      console.log("dohvaceno");
-      dateObj.setDate(new Date().getDate() + count);
-    }
-
-    return {
-      year: dateObj.getFullYear(),
-      day: dateObj.getDate(),
-      month: dateObj.getMonth() + 1,
-      dayName: dayNames[dateObj.getDay()],
-    };
-  };
   //////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////
   const [selectedDay, setSelectedDay] = useState(formatDate());
@@ -156,7 +137,7 @@ const DateNav = ({ catchData, curJob, catchD }) => {
           pattern="[0-9]*"
           className="inputField"
           name="workHours"
-          placeholder="Radni sati"
+          placeholder="shitf duration"
           value={workHours}
           onChange={hoursChange}
           style={{ display: "block" }}
@@ -180,7 +161,7 @@ const DateNav = ({ catchData, curJob, catchD }) => {
           </button>
         </div>
         <div className="hourPad">
-          <HList
+          <HourList
             clickHour={clickHour}
             selectedTimes={selectedTimes}
             catchD={catchD}
@@ -191,4 +172,4 @@ const DateNav = ({ catchData, curJob, catchD }) => {
   );
 };
 
-export default DateNav;
+export default SetShift;

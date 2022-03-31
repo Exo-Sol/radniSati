@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSpring, animated, useTransition } from "react-spring";
-import "../styles/mainStyle.css";
+import "../../styles/mainStyle.css";
 
 const HList = ({ clickHour, selectedTimes, catchD }) => {
   // const clickedBtn = (e) => {

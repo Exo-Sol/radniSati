@@ -18,7 +18,7 @@ const NukeStorage = ({ onAddedTime }) => {
 
   return (
     <div>
-      <img src={nuke} className="nuke" onClick={deleteAll} alt="nukeAll" />
+      <img src={nuke} className="nuke" onClick={deleteAll} alt="deleteAll" />
     </div>
   );
 };

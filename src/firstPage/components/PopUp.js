@@ -9,7 +9,7 @@ const PopUp = ({ curJob }) => {
   });
   return (
     <animated.div className="popUp" style={props}>
-      Spremljeno u {curJob.toUpperCase()}!
+      Saved to {curJob.toUpperCase()}!
     </animated.div>
   );
 };

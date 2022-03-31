@@ -4,7 +4,8 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
-  background-color: black;
+  background-color: rgb(12, 12, 12);
+
   color: azure;
 }
 *:focus {
@@ -32,7 +33,6 @@
   align-items: center;
 
   #jN {
-    margin-bottom: 6vh;
     padding: 15px;
   }
   #addJob {
@@ -60,7 +60,10 @@
   .jobDispl {
     display: flex;
     justify-content: center;
+    align-items: center;
+    justify-items: center;
     font-size: 15px;
+    margin-bottom: 5vh;
   }
   .jobArrow {
     font-size: 38px;
@@ -82,8 +85,11 @@
 }
 
 .dateNav {
+  display: flex;
+  align-items: center;
   font-size: 2em;
   #animateDate {
+    padding-top: 2px;
     padding-right: 10px;
   }
 }

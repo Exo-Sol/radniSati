@@ -15,11 +15,11 @@ const NameJob = ({ catchName }) => {
   return (
     <div className="jobName">
       <form action="" onSubmit={onSubmit}>
-        <h3>Unesi naziv posla</h3>
+        <h3>Enter job name</h3>
         <div className="miniFlex">
           <input
             type="text"
-            placeholder="Tu"
+            placeholder="..."
             value={jobName}
             onChange={inputName}
             id="placeHolder"

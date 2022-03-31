@@ -50,10 +50,10 @@ const MainDiv = ({ data }) => {
         className="childDiv"
         data={num}
         numTag={true}
-        tableName={"Br."}
+        tableName={"num"}
       />
       <DateChild className="childDiv" days={days} month={month} />
-      <TemplateChild className="childDiv" data={dayOfWeek} tableName={"dani"} />
+      <TemplateChild className="childDiv" data={dayOfWeek} tableName={"day"} />
       <TemplateChild
         className="childDiv"
         data={startTimes}
@@ -63,13 +63,13 @@ const MainDiv = ({ data }) => {
       <TemplateChild
         className="childDiv"
         data={endTimes}
-        tableName={"Kraj"}
+        tableName={"End"}
         endTag={true}
       />
       <TemplateChild
         className="childDiv"
         data={workHours}
-        tableName={"Sati"}
+        tableName={"hours"}
         last={ukupno}
       />
     </div>

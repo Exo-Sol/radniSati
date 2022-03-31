@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+// this is the bottom component
+
 const DisplayThisMonthHours = ({ curJob }) => {
   const dateObj = new Date();
   const retriveArr = JSON.parse(localStorage.getItem(dateObj.getFullYear()));

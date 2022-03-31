@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import DateNav from "./components/DateNav";
+import SetShift from "./components/setShift/SetShift";
 import NameJob from "./components/addRenameJob/NameJob";
 import DisplayThisMonthHours from "./components/DisplayThisMonthHours";
 import { useSpring, animated } from "react-spring";
 
-function FirstPage({ onAddedTime, nuke }) {
+function FirstPage({ onAddedTime, deleteAll }) {
   const [jobName, setJobName] = useState(null);
+  //selected job
   const [curJob, setCurJob] = useState(null);
   const [addJob, setAddJob] = useState(false);
   /// to force update on hours in a month
@@ -24,7 +25,7 @@ function FirstPage({ onAddedTime, nuke }) {
   useEffect(() => {
     setJobName(null);
     setCurJob(null);
-  }, [nuke]);
+  }, [deleteAll]);
 
   ///Retrivin Jobs from local storage on initial render
   useEffect(() => {
@@ -62,7 +63,7 @@ function FirstPage({ onAddedTime, nuke }) {
         /// show alert pointing why you cant enetr name
         /// either you didnt type anything or name already exists
         if (jobName.includes(name)) {
-          alert("Posao s tim imenom vec postoji");
+          alert("Job already exists");
         }
       }
       setCurJob(name);
@@ -70,7 +71,7 @@ function FirstPage({ onAddedTime, nuke }) {
     }
   };
 
-  /////code for saving jobs from state in local storage
+  /////saving jobs from state in local storage
 
   useEffect(() => {
     if (jobName) {
@@ -99,6 +100,7 @@ function FirstPage({ onAddedTime, nuke }) {
   };
   ////////////////////////////////////////////////////////
   const catchData = (dateObj, workHours, startEndTime) => {
+    // two entry formats 1."start time" and "end time" are set 2. only shift lenght is enetered start and end are not
     const finalObj = startEndTime.startTime
       ? {
           job: curJob,
@@ -127,7 +129,7 @@ function FirstPage({ onAddedTime, nuke }) {
       localStorage.setItem(dateObj.year, objForSaving);
     } else if (dateObj.year in localStorage) {
       console.log(retrivedObj);
-      let x = new Array();
+      let x = [];
       console.log(typeof x);
 
       x.push(retrivedObj);
@@ -137,7 +139,6 @@ function FirstPage({ onAddedTime, nuke }) {
 
       localStorage.setItem(dateObj.year, objForSaving);
     } else {
-      let x = [];
       let storageArr = JSON.stringify(finalObj);
       console.log(storageArr);
       localStorage.setItem(dateObj.year, storageArr);
@@ -145,7 +146,6 @@ function FirstPage({ onAddedTime, nuke }) {
     setChangeOfH(!chageOfH);
     /// indicate change for second page
     onAddedTime();
-    console.log("to mi treba tommy");
   };
   ///////////////////////////////////////////////////////////////////////////////////////
   const backName = () => {
@@ -196,10 +196,10 @@ function FirstPage({ onAddedTime, nuke }) {
       {jobName && (
         <div>
           <button id="addJob" onClick={addJobClick}>
-            Dodaj posao
+            Add Job
           </button>
           <button id="removeJob" onClick={deleteJobClick}>
-            Izbrisi posao
+            Del Job
           </button>
         </div>
       )}
@@ -208,7 +208,7 @@ function FirstPage({ onAddedTime, nuke }) {
 
       {jobName && (
         <animated.div style={springProps}>
-          <DateNav
+          <SetShift
             catchData={catchData}
             curJob={curJob}
             catchD={catchDropdown}
