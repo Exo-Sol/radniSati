@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
-import SetShift from "./components/setShift/SetShift";
+import DateNav from "./components/DateNav";
 import NameJob from "./components/addRenameJob/NameJob";
 import DisplayThisMonthHours from "./components/DisplayThisMonthHours";
 import { useSpring, animated } from "react-spring";
-import MessageModal from "../components/MessageModal";
-import { answers } from "../components/modalTexts";
 
-function FirstPage({ onAddedTime, deleteAll }) {
-  console.log(answers);
+function FirstPage({ onAddedTime, nuke }) {
   const [jobName, setJobName] = useState(null);
-  //selected job
   const [curJob, setCurJob] = useState(null);
   const [addJob, setAddJob] = useState(false);
   /// to force update on hours in a month
@@ -17,34 +13,24 @@ function FirstPage({ onAddedTime, deleteAll }) {
   // to toggle of display thismonthhours
   const [displaySwitch, setDisplaySwitch] = useState(true);
   /////////////////////Saving current job in local storage when changed for display on page 2
-  const [showJobArrow, setShowJobArrow] = useState(false);
-
-  ///////////////modal with portals/////////////////////////////////////
-  const [showModal, setShowModal] = useState(false);
-  const [modalMessage, setModalMessage] = useState("");
-  const [modalConfirm, setModalConfirm] = useState(() => false);
-
-  const removeModal = () => {
-    setShowModal(false);
-  };
-  ////////////////////////////////////////////////////
-
   useEffect(() => {
     localStorage.setItem("currentJob", curJob);
     /// indicate change for second page
-
+    /////////////////////////////////////
+    ///////////////////////////////////////
     onAddedTime();
   }, [curJob]);
 
+  // for deleting all data
   useEffect(() => {
     setJobName(null);
     setCurJob(null);
-  }, [deleteAll]);
+  }, [nuke]);
 
   ///Retrivin Jobs from local storage on initial render
   useEffect(() => {
     const savedJobs = window.localStorage.getItem("jobs");
-
+    console.log(savedJobs);
     if (savedJobs) {
       if (savedJobs.includes(",")) {
         const array = savedJobs.split(",");
@@ -77,18 +63,15 @@ function FirstPage({ onAddedTime, deleteAll }) {
         /// show alert pointing why you cant enetr name
         /// either you didnt type anything or name already exists
         if (jobName.includes(name)) {
-          setModalMessage(answers[0]);
-          setShowModal(true);
+          alert("Posao s tim imenom vec postoji");
         }
       }
       setCurJob(name);
       setAddJob(false);
-    } else {
-      setAddJob(false);
     }
   };
 
-  /////saving jobs from state in local storage
+  /////code for saving jobs from state in local storage
 
   useEffect(() => {
     if (jobName) {
@@ -102,14 +85,9 @@ function FirstPage({ onAddedTime, deleteAll }) {
   const addJobClick = () => {
     setAddJob(true);
   };
-  ///////////////////////Delete Job//////////////////////////////////////
-  const deleteJobClick = () => {
-    setModalMessage(`${answers[1]} ${curJob} ?`);
-    setShowModal(true);
-  };
 
-  useEffect(() => {
-    if (modalConfirm) {
+  const deleteJobClick = () => {
+    if (window.confirm(`Izbrisi ${curJob}?`)) {
       if (jobName && jobName.length > 1) {
         let filteredAry = jobName.filter((e) => e !== curJob);
         setJobName(filteredAry);
@@ -119,13 +97,9 @@ function FirstPage({ onAddedTime, deleteAll }) {
         setCurJob(null);
       }
     }
-    setModalConfirm(false);
-  }, [modalConfirm]);
-  //////////////////////////////////////////////////////////////////
-
+  };
   ////////////////////////////////////////////////////////
   const catchData = (dateObj, workHours, startEndTime) => {
-    // two entry formats 1."start time" and "end time" are set 2. only shift lenght is enetered, without start and end time
     const finalObj = startEndTime.startTime
       ? {
           job: curJob,
@@ -153,7 +127,9 @@ function FirstPage({ onAddedTime, deleteAll }) {
       let objForSaving = JSON.stringify(retrivedObj);
       localStorage.setItem(dateObj.year, objForSaving);
     } else if (dateObj.year in localStorage) {
-      let x = [];
+      console.log(retrivedObj);
+      let x = new Array();
+      console.log(typeof x);
 
       x.push(retrivedObj);
 
@@ -162,8 +138,9 @@ function FirstPage({ onAddedTime, deleteAll }) {
 
       localStorage.setItem(dateObj.year, objForSaving);
     } else {
+      let x = [];
       let storageArr = JSON.stringify(finalObj);
-
+      console.log(storageArr);
       localStorage.setItem(dateObj.year, storageArr);
     }
     setChangeOfH(!chageOfH);
@@ -173,6 +150,7 @@ function FirstPage({ onAddedTime, deleteAll }) {
   ///////////////////////////////////////////////////////////////////////////////////////
   const backName = () => {
     const curIndex = jobName.findIndex((ele) => ele === curJob);
+    console.log(curIndex);
 
     if (curIndex - 1 < 0) {
       setCurJob(jobName[jobName.length - 1]);
@@ -193,17 +171,14 @@ function FirstPage({ onAddedTime, deleteAll }) {
   //////////////////////////////////////////////////////////////////////////////////////
   const jobDisplay = (
     <div className="jobDispl">
-      {jobName && jobName.length > 1 && showJobArrow === true && (
+      {jobName && jobName.length > 1 && (
         <span className="material-icons jobArrow" onClick={backName}>
           arrow_back_ios
         </span>
       )}
 
-      <h4 id="jN" onClick={() => setShowJobArrow(!showJobArrow)}>
-        {curJob}
-      </h4>
-
-      {jobName && jobName.length > 1 && showJobArrow === true && (
+      <h4 id="jN">{curJob}</h4>
+      {jobName && jobName.length > 1 && (
         <span className="material-icons jobArrow" onClick={fowardName}>
           arrow_forward_ios
         </span>
@@ -218,41 +193,28 @@ function FirstPage({ onAddedTime, deleteAll }) {
   ///////////////////////////////////////////////////////////////////////////
   return (
     <div className="FirstPage">
-      {jobName && showJobArrow && (
+      {jobName && (
         <div>
           <button id="addJob" onClick={addJobClick}>
-            Add Job
+            Dodaj posao
           </button>
           <button id="removeJob" onClick={deleteJobClick}>
-            Del Job
+            Izbrisi posao
           </button>
         </div>
       )}
-      {jobName ? (
-        jobDisplay
-      ) : (
-        <NameJob catchName={catchName} noBackButton={true} />
-      )}
+      {jobName ? jobDisplay : <NameJob catchName={catchName} />}
       {addJob && <NameJob catchName={catchName} />}
 
       {jobName && (
         <animated.div style={springProps}>
-          <SetShift
+          <DateNav
             catchData={catchData}
             curJob={curJob}
             catchD={catchDropdown}
-            setModalMessage={setModalMessage}
-            setShowModal={setShowModal}
           />
         </animated.div>
       )}
-      <MessageModal
-        showModal={showModal}
-        removeModal={removeModal}
-        setModalConfirm={setModalConfirm}
-      >
-        {modalMessage}
-      </MessageModal>
       {jobName && displaySwitch && (
         <DisplayThisMonthHours curJob={curJob} change={chageOfH} />
       )}

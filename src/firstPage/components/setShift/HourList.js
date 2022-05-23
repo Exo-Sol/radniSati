@@ -3,11 +3,6 @@ import { useSpring, animated, useTransition } from "react-spring";
 import "../../styles/mainStyle.css";
 
 const HList = ({ clickHour, selectedTimes, catchD }) => {
-  // const clickedBtn = (e) => {
-  //   clickHour
-  //   console.log(e.target.textContent);
-  // };
-
   // create an array of jobe time stamps, for now
   const arr = [];
   ////////////////////////
@@ -42,11 +37,11 @@ const HList = ({ clickHour, selectedTimes, catchD }) => {
   const resetSyle = {
     border: "gray 1px solid",
     color: "black",
-    backgroundColor: "#fafad2",
+    backgroundColor: "azure",
   };
 
   for (let i = 7; i <= 24; i++) {
-    if (i == selectedTimes.startTime) {
+    if (i === parseInt(selectedTimes.startTime)) {
       arr.push(
         <h1
           onClick={clickHour}
@@ -57,7 +52,7 @@ const HList = ({ clickHour, selectedTimes, catchD }) => {
           {i}
         </h1>
       );
-    } else if (i == selectedTimes.endTime) {
+    } else if (i === parseInt(selectedTimes.endTime)) {
       arr.push(
         <h1 onClick={clickHour} className="numberList" style={endStyle} key={i}>
           {i}

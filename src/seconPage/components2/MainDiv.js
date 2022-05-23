@@ -9,8 +9,6 @@ const MainDiv = ({ data }) => {
     return x;
   });
 
-  console.log(sortedData);
-
   const num = sortedData.map((ele, ind) => {
     return ind + 1;
   });
@@ -43,7 +41,6 @@ const MainDiv = ({ data }) => {
     var ukupno = workHours.reduce((x, y) => parseInt(x) + parseInt(y));
   }
 
-  console.log(days, month, dayOfWeek, startTimes, endTimes, workHours, num);
   return (
     <div className="mainDiv">
       <TemplateChild

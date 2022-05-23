@@ -22,13 +22,10 @@ const Delete = ({ relevantShifts, onAddedTime }) => {
 
   const firstClickDel = () => {
     setForSaving([]);
-    console.log(relevantShifts.length);
-    console.log(parseInt(deleteInput));
+
     if (parseInt(deleteInput) <= relevantShifts.length) {
       // delete that data, update page
       delSelectedData(relevantShifts[parseInt(deleteInput) - 1]);
-
-      console.log("tu smo maci");
     }
     setClickedDel(!clickedDel);
   };
@@ -45,21 +42,17 @@ const Delete = ({ relevantShifts, onAddedTime }) => {
   /////////////////////////////////////////////////////////////////////////////////////////////////
 
   const delSelectedData = (data) => {
-    console.log(data);
     const dateObj = new Date();
     const retriveArr = JSON.parse(localStorage.getItem(dateObj.getFullYear()));
-    console.log(retriveArr);
+
     if (Array.isArray(retriveArr) && retriveArr.length > 1) {
       retriveArr.map((ele, ind) => {
         if (JSON.stringify(ele) !== JSON.stringify(data)) {
-          console.log("hit that");
           setForSaving((forSaving) => [...forSaving, ele]);
         }
       });
     } else {
-      console.log("a moramo bit ovdi");
       setForSaving(undefined);
-
       setDeleteInput(undefined);
     }
   };

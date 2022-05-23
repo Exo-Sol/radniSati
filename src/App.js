@@ -15,7 +15,6 @@ const App = () => {
     setChange(!change);
     if (del) {
       setDeleteAll(!deleteAll);
-      console.log();
     }
   };
   //  const FirstPage = <FirstPage onAddedTime={onAddedTime} />;

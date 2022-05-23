@@ -24,8 +24,8 @@ const DisplayThisMonthHours = ({ curJob }) => {
 
   return (
     <div className="displInfoMain">{`${totalH} ${
-      lastChar === 1 ? "sat" : "sati"
-    } u ${month} mj. (${curJob}) `}</div>
+      lastChar === 1 ? "hour" : "hours"
+    } in ${month}. month (${curJob}) `}</div>
   );
 };
 

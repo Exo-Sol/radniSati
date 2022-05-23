@@ -5,6 +5,8 @@
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
   background-color: rgb(12, 12, 12);
+  caret-color: transparent;
+  cursor: default;
 
   color: azure;
 }
@@ -37,24 +39,30 @@
   }
   #addJob {
     position: absolute;
+    margin-left: 40vw;
     top: 5px;
+    margin-top: 40px;
     left: 5px;
+    height: 36px;
     font-size: 15px;
-    padding: 5px;
+    padding: 6px;
+    border-top: 1px solid gray;
+    border-right: 1px solid gray;
 
-    border-top: 2px rgb(163, 30, 30);
-    border-left: 2px;
     border-radius: 15px;
   }
   #removeJob {
     position: absolute;
+    margin-right: 40vw;
+    margin-top: 40px;
     top: 5px;
     right: 5px;
     font-size: 15px;
-    padding: 5px;
+    height: 36px;
+    padding: 6px;
 
-    border-top: 2px rgb(163, 30, 30);
-    border-right: 2px;
+    border-top: 1px solid gray;
+    border-left: 1px solid gray;
     border-radius: 15px;
   }
   .jobDispl {
@@ -80,15 +88,22 @@
   gap: 15px;
   .flexWrapButtons {
     display: flex;
-    gap: 15px;
+    gap: 20px;
   }
 }
 
 .dateNav {
   display: flex;
   align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
   font-size: 2em;
+  padding-top: 10px;
+  padding-bottom: 10px;
   #animateDate {
+    margin-top: 5px;
+    margin-bottom: 5px;
     padding-top: 2px;
     padding-right: 10px;
   }
@@ -101,6 +116,7 @@
   width: 150px;
   padding: 10px;
   border-radius: 15%;
+  caret-color: azure;
 }
 .inputField::-webkit-outer-spin-button,
 .inputField::-webkit-inner-spin-button {
@@ -115,6 +131,8 @@
 
 .hourSelect {
   display: grid;
+  caret-color: transparent;
+  cursor: pointer;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 5%;
   padding: 5%;
@@ -178,6 +196,8 @@
 }
 
 .hButton {
+  caret-color: transparent;
+  cursor: pointer;
   border-radius: 50%;
   height: 40px;
   width: 40px;
@@ -190,6 +210,7 @@
   height: 20vh;
   width: 200px;
   text-align: center;
+  margin-top: 7px;
 }
 
 .popUpWrapper {
@@ -204,7 +225,7 @@
     padding: 15px;
     padding-right: 10px;
     padding-left: 10px;
-    background-color: black;
+    background-color: rgb(12, 12, 12);
     color: rgb(59, 226, 148);
     font-weight: 900;
 
@@ -220,6 +241,18 @@
   .miniFlex {
     display: flex;
     align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+  }
+  .formWrap {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
   }
 
   #placeHolder {
@@ -236,6 +269,20 @@
     border-top-right-radius: 50%;
     border: none;
     background-color: rgb(47, 47, 47);
+  }
+
+  #cancelJobEntry {
+    margin-top: 5px;
+    font-size: 25px;
+    height: 35px;
+    width: 35px;
+    border-bottom-left-radius: 50%;
+    border-top-left-radius: 50%;
+    border: none;
+    background-color: rgb(47, 47, 47);
+    color: #a57a7a;
+    font-weight: bold;
+    font-size: 1.2em;
   }
 }
 
@@ -341,5 +388,98 @@
     width: 100%;
     font-size: 14px;
     animation: glow 6s ease-in-out infinite;
+  }
+}
+
+.modalOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  background-color: rgba($color: #000000, $alpha: 0.7);
+}
+
+.modalText {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+  justify-items: center;
+}
+
+.modalButtons {
+  display: flex;
+  gap: 15px;
+}
+
+.modal {
+  position: fixed;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 12px;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 150px;
+
+  z-index: 4;
+
+  .okModal {
+    text-align: center;
+    margin-top: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    width: 60px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .FirstPage {
+    #addJob {
+      margin-left: 30vw;
+    }
+
+    #removeJob {
+      margin-right: 30vw;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .FirstPage {
+    #addJob {
+      margin-left: 0;
+      margin-top: 0;
+    }
+
+    #removeJob {
+      margin-right: 0;
+      margin-top: 0;
+    }
+  }
+}
+
+@media (orientation: landscape) and (max-height: 900px) {
+  .FirstPage {
+    #addJob {
+      margin-left: 0;
+      margin-top: 0;
+    }
+
+    .jobDispl {
+      margin-top: 40px;
+    }
+
+    #removeJob {
+      margin-right: 0;
+      margin-top: 0;
+    }
   }
 }

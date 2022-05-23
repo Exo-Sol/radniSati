@@ -4,14 +4,20 @@ import formatDate from "./formatDate";
 import "../../styles/mainStyle.css";
 import PopUp from "../PopUp";
 
-const SetShift = ({ catchData, curJob, catchD }) => {
+const SetShift = ({
+  catchData,
+  curJob,
+  catchD,
+  setModalMessage,
+  setShowModal,
+}) => {
   const [clickCount, setClickCount] = useState(0);
 
   //////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////
   const [selectedDay, setSelectedDay] = useState(formatDate());
   ///////////////////////////////////////////////////////////////
-  const [workHours, setWorkHours] = useState(undefined);
+  const [workHours, setWorkHours] = useState("shift duration");
   //////////////////////////////////////////////////////////////
   const [selectedTimes, setSelectedTimes] = useState({
     startTime: null,
@@ -19,6 +25,7 @@ const SetShift = ({ catchData, curJob, catchD }) => {
   });
   //////////////////////////////////////////////////////////////
   const [popUpState, setPopUpState] = useState(false);
+  const [showDateArrow, setShowDateArrow] = useState(false);
 
   ////////////////////////ANIMATION///////////////////////////////////////
 
@@ -93,7 +100,8 @@ const SetShift = ({ catchData, curJob, catchD }) => {
       workHours === "" ||
       workHours === undefined
     ) {
-      alert("Netocno uneseni sati");
+      setModalMessage("Incorrect shift duration");
+      setShowModal(true);
     } else if (workHours !== 0) {
       catchData(selectedDay, workHours, selectedTimes);
 
@@ -125,10 +133,13 @@ const SetShift = ({ catchData, curJob, catchD }) => {
         {popUpState ? <PopUp curJob={curJob} /> : <div></div>}
       </div>
       <div className="dateNav">
-        {backArrow}
+        {showDateArrow ? backArrow : <span></span>}
 
-        <span id="animateDate">{`${selectedDay.dayName}, ${selectedDay.day}/${selectedDay.month}`}</span>
-        {fwdArrow}
+        <span
+          id="animateDate"
+          onClick={() => setShowDateArrow(!showDateArrow)}
+        >{`${selectedDay.dayName}, ${selectedDay.day}/${selectedDay.month}`}</span>
+        {showDateArrow ? fwdArrow : <span></span>}
       </div>
       <div className="flexWrapNav">
         <input

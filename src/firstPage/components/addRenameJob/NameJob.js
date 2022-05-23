@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const NameJob = ({ catchName }) => {
+const NameJob = ({ catchName, noBackButton }) => {
   const [jobName, setJobName] = useState("");
 
   const inputName = (e) => {
@@ -12,14 +12,26 @@ const NameJob = ({ catchName }) => {
     catchName(jobName);
   };
 
+  const cancel = () => {
+    catchName("");
+  };
+
   return (
     <div className="jobName">
-      <form action="" onSubmit={onSubmit}>
+      <form action="" onSubmit={onSubmit} className="formWrap">
         <h3>Enter job name</h3>
+
         <div className="miniFlex">
+          {noBackButton ? (
+            <></>
+          ) : (
+            <button onClick={cancel} id="cancelJobEntry">
+              x
+            </button>
+          )}
           <input
             type="text"
-            placeholder="..."
+            placeholder=" ..."
             value={jobName}
             onChange={inputName}
             id="placeHolder"
