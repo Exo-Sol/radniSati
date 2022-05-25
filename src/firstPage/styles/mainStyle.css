@@ -519,6 +519,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-color: #000000;
+  overflow: hidden;
 }
 
 .logoDiv .logo {
@@ -527,16 +529,20 @@
   height: 300px;
   width: 300px;
   margin-top: 15px;
+  background-color: #000000;
 }
 
 .logoDiv .info {
   position: fixed;
-  bottom: 15px;
+  padding-bottom: 15px;
+  bottom: 0px;
   margin-left: 10px;
   width: 100%;
   font-size: 14px;
   -webkit-animation: glow 6s ease-in-out infinite;
           animation: glow 6s ease-in-out infinite;
+  background-color: #000000;
+  padding: 10px;
 }
 
 .modalOverlay {
@@ -553,6 +559,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  text-align: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -560,6 +567,7 @@
       -ms-flex-align: center;
           align-items: center;
   justify-items: center;
+  padding: 5px;
 }
 
 .modalButtons {

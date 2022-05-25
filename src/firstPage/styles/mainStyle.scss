@@ -371,6 +371,8 @@
   flex-direction: column;
   justify-items: center;
   align-items: center;
+  background-color: #000000;
+  overflow: hidden;
 
   .logo {
     -webkit-animation: spin 6s ease-in-out infinite;
@@ -379,15 +381,19 @@
     height: 300px;
     width: 300px;
     margin-top: 15px;
+    background-color: #000000;
   }
 
   .info {
     position: fixed;
-    bottom: 15px;
+    padding-bottom: 15px;
+    bottom: 0px;
     margin-left: 10px;
     width: 100%;
     font-size: 14px;
     animation: glow 6s ease-in-out infinite;
+    background-color: #000000;
+    padding: 10px;
   }
 }
 
@@ -403,11 +409,13 @@
 
 .modalText {
   display: flex;
+  text-align: center;
 
   justify-content: center;
 
   align-items: center;
   justify-items: center;
+  padding: 5px;
 }
 
 .modalButtons {

@@ -1,6 +1,14 @@
 import React from "react";
 
-const TemplateChild = ({ data, tableName, last, endTag, startTag, numTag }) => {
+const TemplateChild = ({
+  data,
+  tableName,
+  last,
+  endTag,
+  startTag,
+  numTag,
+  calc,
+}) => {
   const startEndStyle = () => {
     if (endTag) {
       return {
@@ -21,6 +29,10 @@ const TemplateChild = ({ data, tableName, last, endTag, startTag, numTag }) => {
     }
   };
 
+  const calcSallary = () => {
+    calc(last);
+  };
+
   return (
     <div>
       <div>
@@ -34,7 +46,12 @@ const TemplateChild = ({ data, tableName, last, endTag, startTag, numTag }) => {
             );
           })}
           {last && (
-            <li key={9999} className=" childLi" id="totalLi">
+            <li
+              key={9999}
+              className=" childLi"
+              id="totalLi"
+              onClick={calcSallary}
+            >
               {last}
             </li>
           )}

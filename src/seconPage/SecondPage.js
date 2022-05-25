@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import MainDiv from "./components2/MainDiv";
 import Delete from "./components2/Delete";
 import NukeStorage from "./components2/NukeStorage";
+import Calculate from "../components/Calculate";
 import "./styles2/styles.css";
 
 const SecondPage = ({ change, onAddedTime }) => {
@@ -21,6 +22,17 @@ const SecondPage = ({ change, onAddedTime }) => {
   const [month, setMonth] = useState(dateObj.getMonth() + 1);
   const [relevantShifts, setRelevantShifts] = useState([]);
 
+  ///////////////////////////CALC SALARY/////////////////////////////////
+  const [calcSall, setCalcSall] = useState(false);
+  const [totHours, setTotHours] = useState(0);
+
+  const calculateSallary = (number) => {
+    setCalcSall(!calcSall);
+    setTotHours(number);
+  };
+  ////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////
+
   ///////////////////////////////////////////////////////////////////
   const retriveArr = JSON.parse(localStorage.getItem(dateObj.getFullYear()));
 
@@ -28,7 +40,7 @@ const SecondPage = ({ change, onAddedTime }) => {
   useEffect(() => {
     setCurJob(() => currentJob);
     setRelevantShifts(() => []);
-    console.log("masta");
+
     setLinkEffect(!linkEffect);
   }, [change]);
   ////////////////////////////////////////////////////////////
@@ -51,11 +63,8 @@ const SecondPage = ({ change, onAddedTime }) => {
 
   monthsWorked.forEach((ele) => newMonthArr.push(parseInt(ele)));
 
-  console.log(monthsWorked);
-
   newMonthArr.sort((a, b) => a - b);
 
-  console.log(newMonthArr);
   ///////////////////////////////udating relevant data when month change or user inputs something on first page/////////////////////////////////////////////////////////////////////
 
   useEffect(() => {
@@ -77,18 +86,16 @@ const SecondPage = ({ change, onAddedTime }) => {
       retriveArr.map((ele, ind) => {
         if (ele.job === curJob && ele.month === month) {
           setRelevantShifts((relevantShifts) => [...relevantShifts, ele]);
-          console.log(curJob);
         }
       });
     } else if (retriveArr) {
       if (retriveArr.job === curJob && retriveArr.month === month) {
         setRelevantShifts([retriveArr]);
-        console.log(curJob);
       }
     } else {
       setRelevantShifts([]);
     }
-    console.log("kokikoki");
+    return () => setRelevantShifts([]);
   }, [linkEffect]);
 
   //////////////////////////////////////////////////////////////////////////////////////////////
@@ -105,7 +112,7 @@ const SecondPage = ({ change, onAddedTime }) => {
     setToggleDropdown(false);
   };
 
-  return (
+  return !calcSall ? (
     <div>
       <div className="curJob">{curJob}</div>
       <ul className="monthWhole">
@@ -119,10 +126,19 @@ const SecondPage = ({ change, onAddedTime }) => {
             </li>
           ))}
       </ul>
-      {!toggleDropdown && <MainDiv data={relevantShifts} />}
+      {!toggleDropdown && (
+        <MainDiv data={relevantShifts} calc={calculateSallary} />
+      )}
       <Delete relevantShifts={relevantShifts} onAddedTime={onAddedTime} />
       <NukeStorage onAddedTime={onAddedTime} />
     </div>
+  ) : (
+    <Calculate
+      back={calculateSallary}
+      cur={curJob}
+      totHours={totHours}
+      change={change}
+    />
   );
 };
 

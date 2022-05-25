@@ -138,7 +138,8 @@ li {
   padding-top: 3px;
   padding-bottom: 3px;
   margin-top: 10px;
-  border-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
 }
 
 .startColor {
@@ -164,7 +165,7 @@ li {
 }
 
 .deleteDiv #deleteIcon {
-  color: bisque;
+  color: aliceblue;
 }
 
 .deleteDiv #delPlaceholder {
@@ -175,9 +176,64 @@ li {
 }
 
 .nuke {
-  height: 45px;
+  height: 40px;
   position: absolute;
   bottom: 0;
+  margin-bottom: 7px;
+  opacity: 0.5;
   right: -100vw;
+}
+
+.calcButtonWrap {
+  position: absolute;
+  bottom: 20px;
+}
+
+.calculate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 40px;
+  height: 50vh;
+}
+
+.calculate .calcSheet {
+  margin-bottom: 10px;
+}
+
+.calculate #earnd {
+  font-size: 20px;
+  padding: 15px;
+  margin-bottom: 35px;
+}
+
+.calculate .calcButton {
+  margin-top: 20px;
+  padding: 6px;
+  border-radius: 3%;
+  width: 70vw;
+}
+
+.calculate .bContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 50px;
+}
+
+.calculate .bContainer .calcButton2 {
+  padding: 10px;
+  margin: 15px;
+  border-radius: 15%;
 }
 /*# sourceMappingURL=styles.css.map */

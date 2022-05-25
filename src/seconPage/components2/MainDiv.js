@@ -2,7 +2,7 @@ import React from "react";
 import DateChild from "../components2/childs/DateChild";
 import TemplateChild from "../components2/childs/TemplateChild";
 
-const MainDiv = ({ data }) => {
+const MainDiv = ({ data, calc }) => {
   // SORTING///////////////////////////////
   let sortedData = data.sort((a, b) => {
     let x = a.day < b.day ? -1 : 1;
@@ -68,6 +68,7 @@ const MainDiv = ({ data }) => {
         data={workHours}
         tableName={"hours"}
         last={ukupno}
+        calc={calc}
       />
     </div>
   );
