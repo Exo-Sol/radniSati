@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import SetShift from "./components/setShift/SetShift";
 import NameJob from "./components/addRenameJob/NameJob";
-import DisplayThisMonthHours from "./components/DisplayThisMonthHours";
+import DisplayInfo from "./components/DisplayInfo";
 import { useSpring, animated } from "react-spring";
 import MessageModal from "../components/MessageModal";
 import { answers } from "../components/modalTexts";
+import swipe from "../Icons/swipe.png";
 
-function FirstPage({ onAddedTime, deleteAll }) {
+function FirstPage({ onAddedTime, deleteAll, swipeInd }) {
   console.log(answers);
   const [jobName, setJobName] = useState(null);
   //selected job
@@ -14,8 +15,8 @@ function FirstPage({ onAddedTime, deleteAll }) {
   const [addJob, setAddJob] = useState(false);
   /// to force update on hours in a month
   const [chageOfH, setChangeOfH] = useState(false);
-  // to toggle of display thismonthhours
-  const [displaySwitch, setDisplaySwitch] = useState(true);
+  // to change displayInfo
+  const [displaySwitch, setDisplaySwitch] = useState(false);
   /////////////////////Saving current job in local storage when changed for display on page 2
   const [showJobArrow, setShowJobArrow] = useState(false);
 
@@ -211,8 +212,13 @@ function FirstPage({ onAddedTime, deleteAll }) {
     </div>
   );
   ////////////////////////////////////////////////////////////////////////////
-  const catchDropdown = () => {
-    setDisplaySwitch(!displaySwitch);
+  const catchDropdown = (prop) => {
+    if (!prop) setDisplaySwitch(true);
+    else setDisplaySwitch(false);
+  };
+
+  const startEndTime = (x) => {
+    setDisplaySwitch(x);
   };
 
   ///////////////////////////////////////////////////////////////////////////
@@ -243,6 +249,7 @@ function FirstPage({ onAddedTime, deleteAll }) {
             catchD={catchDropdown}
             setModalMessage={setModalMessage}
             setShowModal={setShowModal}
+            startEndTime={startEndTime}
           />
         </animated.div>
       )}
@@ -253,9 +260,18 @@ function FirstPage({ onAddedTime, deleteAll }) {
       >
         {modalMessage}
       </MessageModal>
-      {jobName && displaySwitch && (
-        <DisplayThisMonthHours curJob={curJob} change={chageOfH} />
+      {jobName && !displaySwitch ? (
+        <DisplayInfo curJob={curJob} change={chageOfH} />
+      ) : (
+        displaySwitch && (
+          <DisplayInfo
+            curJob={curJob}
+            change={chageOfH}
+            displaySwitch={displaySwitch}
+          />
+        )
       )}
+      {swipeInd && <img src={swipe} alt="swipe" id="swipeIcon" />}
     </div>
   );
 }

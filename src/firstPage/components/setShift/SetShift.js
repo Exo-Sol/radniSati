@@ -10,6 +10,7 @@ const SetShift = ({
   catchD,
   setModalMessage,
   setShowModal,
+  startEndTime,
 }) => {
   const [clickCount, setClickCount] = useState(0);
 
@@ -29,7 +30,9 @@ const SetShift = ({
 
   ////////////////////////ANIMATION///////////////////////////////////////
 
-  ///////////////////////////////////////////////////////////////
+  useEffect(() => {
+    startEndTime(selectedTimes);
+  }, [selectedTimes]);
 
   // settin the displayed date <_> clicking day back or foward is hooked with useEffect to change state
   //witch is date displayed visualy

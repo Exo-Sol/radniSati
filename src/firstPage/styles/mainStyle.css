@@ -37,6 +37,86 @@
   }
 }
 
+@-webkit-keyframes wave-animation {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    -webkit-transform: rotate(29deg);
+            transform: rotate(29deg);
+  }
+  /* The following five values can be played with to make the waving more or less extreme */
+  20% {
+    -webkit-transform: rotate(-23deg);
+            transform: rotate(-23deg);
+  }
+  30% {
+    -webkit-transform: rotate(29deg);
+            transform: rotate(29deg);
+  }
+  40% {
+    -webkit-transform: rotate(-19deg);
+            transform: rotate(-19deg);
+  }
+  50% {
+    -webkit-transform: rotate(25deg);
+            transform: rotate(25deg);
+  }
+  60% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    opacity: 0.2;
+  }
+  /* Reset for the last half to pause */
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    opacity: 0;
+  }
+}
+
+@keyframes wave-animation {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    -webkit-transform: rotate(29deg);
+            transform: rotate(29deg);
+  }
+  /* The following five values can be played with to make the waving more or less extreme */
+  20% {
+    -webkit-transform: rotate(-23deg);
+            transform: rotate(-23deg);
+  }
+  30% {
+    -webkit-transform: rotate(29deg);
+            transform: rotate(29deg);
+  }
+  40% {
+    -webkit-transform: rotate(-19deg);
+            transform: rotate(-19deg);
+  }
+  50% {
+    -webkit-transform: rotate(25deg);
+            transform: rotate(25deg);
+  }
+  60% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    opacity: 0.2;
+  }
+  /* Reset for the last half to pause */
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    opacity: 0;
+  }
+}
+
 .FirstPage {
   height: 100vh;
   display: -webkit-box;
@@ -640,5 +720,27 @@
     margin-right: 0;
     margin-top: 0;
   }
+}
+
+#swipeIcon {
+  position: absolute;
+  bottom: 10vh;
+  height: 60px;
+  margin-top: 50px;
+  opacity: 0.8;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-name: wave-animation;
+          animation-name: wave-animation;
+  /* Refers to the name of your @keyframes element below */
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-transform-origin: 70% 70%;
+          transform-origin: 70% 70%;
+  /* Pivot around the bottom-left palm */
+  display: inline-block;
+  z-index: 8;
 }
 /*# sourceMappingURL=mainStyle.css.map */

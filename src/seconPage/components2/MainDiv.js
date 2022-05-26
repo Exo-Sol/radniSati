@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DateChild from "../components2/childs/DateChild";
 import TemplateChild from "../components2/childs/TemplateChild";
+import { useHistory } from "react-router-dom";
 
-const MainDiv = ({ data, calc }) => {
+const MainDiv = ({ data, calc, displaySwipe }) => {
+  // if (data.length >= 1) {
+  //   displaySwipe();
+  // }
+  // to indicate user has swiped to second page (so swiping icon can no longer appear)
+  const history = useHistory();
+
+  useEffect(() => {
+    return history.listen((location) => {
+      console.log(location.pathname);
+      if (location.pathname === "/second" || data.length > 0) {
+        displaySwipe();
+      }
+    });
+  }, [history]);
+
+  console.log(data.length);
   // SORTING///////////////////////////////
   let sortedData = data.sort((a, b) => {
     let x = a.day < b.day ? -1 : 1;

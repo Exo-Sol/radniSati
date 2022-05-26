@@ -40,7 +40,7 @@ const HList = ({ clickHour, selectedTimes, catchD }) => {
     backgroundColor: "azure",
   };
 
-  for (let i = 7; i <= 24; i++) {
+  for (let i = 6; i <= 24; i++) {
     if (i === parseInt(selectedTimes.startTime)) {
       arr.push(
         <h1
@@ -72,9 +72,9 @@ const HList = ({ clickHour, selectedTimes, catchD }) => {
     }
   }
 
-  const hClick = () => {
-    changeDisplySelector(!displaySelector);
-    catchD();
+  const hClick = (e) => {
+    changeDisplySelector(e);
+    catchD(e);
   };
 
   return displaySelector ? (
@@ -85,7 +85,7 @@ const HList = ({ clickHour, selectedTimes, catchD }) => {
             {arr}
             <span
               className="material-icons numberList hButton"
-              onClick={hClick}
+              onClick={() => hClick(false)}
               style={resetSyle}
             >
               eject
@@ -96,7 +96,7 @@ const HList = ({ clickHour, selectedTimes, catchD }) => {
   ) : (
     <span
       className="material-icons numberList hButton"
-      onClick={hClick}
+      onClick={() => hClick(true)}
       style={resetSyle}
     >
       query_builder

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FirstPage from "./firstPage/FirstPage";
 import SecondPage from "./seconPage/SecondPage";
 import Page2 from "./components/Page2";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import SwipeableRoutes from "react-swipeable-routes";
 
 const App = () => {
@@ -10,6 +10,15 @@ const App = () => {
   const [change, setChange] = useState(false);
   // when you "nuke" delete all data, also delets jobs
   const [deleteAll, setDeleteAll] = useState(false);
+  // second page visited so user knows he can swipe
+  const [swipeIndicator, setSwipeIndicator] = useState(true);
+
+  const displaySwipeIcon = () => {
+    setSwipeIndicator(false);
+  };
+  ////////////////////////////////////////////////////////////////
+
+  console.log(window.location.href.split("/").pop());
 
   const onAddedTime = (del = false) => {
     setChange(!change);
@@ -36,6 +45,7 @@ const App = () => {
                     {...props}
                     onAddedTime={onAddedTime}
                     deleteAll={deleteAll}
+                    swipeInd={swipeIndicator}
                   />
                 )}
               />
@@ -46,6 +56,7 @@ const App = () => {
                     {...props}
                     change={change}
                     onAddedTime={onAddedTime}
+                    displaySwipe={displaySwipeIcon}
                   />
                 )}
               />

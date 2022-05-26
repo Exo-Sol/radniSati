@@ -5,7 +5,7 @@ import NukeStorage from "./components2/NukeStorage";
 import Calculate from "../components/Calculate";
 import "./styles2/styles.css";
 
-const SecondPage = ({ change, onAddedTime }) => {
+const SecondPage = ({ change, onAddedTime, displaySwipe }) => {
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
   /////////////////////////////getting JObs
@@ -127,7 +127,11 @@ const SecondPage = ({ change, onAddedTime }) => {
           ))}
       </ul>
       {!toggleDropdown && (
-        <MainDiv data={relevantShifts} calc={calculateSallary} />
+        <MainDiv
+          data={relevantShifts}
+          calc={calculateSallary}
+          displaySwipe={displaySwipe}
+        />
       )}
       <Delete relevantShifts={relevantShifts} onAddedTime={onAddedTime} />
       <NukeStorage onAddedTime={onAddedTime} />
